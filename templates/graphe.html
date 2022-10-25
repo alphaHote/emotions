@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>évaluation des sentiments</title>
+        <link rel="stylesheet" href="../static/style/nouveau.css">
+        <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"> -->
+        <!-- </script> -->
+    </head>
+    <body>
+        <div class="conteneur_vertical">
+            <div class="titre">
+                <h3 class="objet">est ce que vos sentiments trahissent vos décisions ? testons le.</h3>
+            </div>
+            <div class="conteneur_horizontal">
+
+                <div class="box_information">
+                    <p>bonjour ici seront stockées les informations qui circulent.</p>
+                </div><!--la fin de la box information-->
+
+                <div class="box_cours">
+                    <div class="div_line_chart">
+                        <canvas class="lineChart" id="lineChart" ></canvas>
+                    </div><!--la fin de la div chart line-->
+
+                    <div class="sentiments">
+                        <div class="commentaire">
+                            <!-- <input type="text" class="input_commentaire" placeholder="insérez un commentaire"  onblur="getVal()"> -->
+                            <textarea class="input_commentaire" placeholder="insérez un commentaire"  id="text_area_commentaire"></textarea>
+                        </div><!--la fin de la div commentaire-->
+
+                        <div class="emoticon">
+                            <table>
+                                <tbody>
+                                    <!-- <tr> -->
+                                        <!-- <td> -->
+                                            <tr>
+                                                <td><h7 class="sentiment_texte">la joie </h7></td>
+                                                <td><h7 class="sentiment_texte">&#128512;</h7></td>
+                                                <td><input type="range" min="0" max="100" value="0" class="slider" id="myRange_a"></td>
+                                                <td><p><span id="demo_a"></span></p></td>
+                                                <td>"     "</td>
+                                            <!-- </tr> -->
+                                            <!-- <tr> -->
+                                                <td><h7 class="sentiment_texte">la colère </h7></td>
+                                                <td><h7 class="sentiment_texte">&#128545;</h7></td>
+                                                <td> <input type="range" min="0" max="100" value="0" class="slider" id="myRange_b"></td>
+                                                <td><p><span id="demo_b"></span></p></td>
+                                                <td>"     "</td>
+                                            <!-- </tr> -->
+                                            
+                                            <!-- <tr> -->
+                                                <td><h7 class="sentiment_texte">la peur </h7></td>
+                                                <td><h7 class="sentiment_texte">😱</h7></td>
+                                                <td> <input type="range" min="0" max="100" value="0" class="slider" id="myRange_c"></td>
+                                                <td><p><span id="demo_c"></span></p></td>
+                                                <td>"     "</td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td><h7 class="sentiment_texte">la tristesse </h7></td>
+                                                <td><h7 class="sentiment_texte">😥</h7></td>
+                                                <td> <input type="range" min="0" max="100" value="0" class="slider" id="myRange_d"></td>
+                                                <td><p><span id="demo_d"></span></p></td>
+                                                <td>"     "</td>
+                                            <!-- </tr> -->
+                                            
+                                            <!-- <tr> -->
+                                                <td><h7 class="sentiment_texte">la surprise </h7></td>
+                                                <td><h7 class="sentiment_texte">😮</h7></td>
+                                                <td> <input type="range" min="0" max="100" value="0" class="slider" id="myRange_e"></td>
+                                                <td><p><span id="demo_e"></span></p></td>
+                                                <td></td>
+                                            <!-- </tr> -->
+                                            
+                                            <!-- <tr> -->
+                                                <td><h7 class="sentiment_texte">le dégoût </h7></td>
+                                                <td><h7 class="sentiment_texte">🤮</h7></td>
+                                                <td> <input type="range" min="0" max="100" value="0" class="slider" id="myRange_f"></td>
+                                                <td><p><span id="demo_f"></span></p></td>
+                                                <td>"     "</td>
+                                            </tr>
+                                        <!-- </td> -->
+                                    <!-- </tr> -->
+                                </tbody>
+                            </table>
+                            <!-- <td><p><span id="demo_g"></span></p></td> -->
+                        </div><!--la fin de la div emoticon-->
+
+                    </div><!--la fin de la div sentiments-->
+
+                    <div class="validation">
+                        <button class="button_soumettre" id="post-btn">soumettre</button>
+                    </div><!--la fin de validation-->
+                </div> <!--la fin de la box cours-->
+
+                <div class="box_choices">
+                    <p>ici seront stockées les opérations voulues par l'investisseur</p>
+                    
+                    <div class="formulaire">
+                        <form action="" method="get" class="formulaire_operation_verticale">
+                            <div class="formulaire_operation">
+                                <label for="name">sens de l'opération </label>
+                                <select name="sens" id="sens_operation"> <option value="achat">achat</option> <option value="vente">vente</option></select>
+                                <!-- <input type="text" name="name" id="name" required> -->
+                            </div>
+
+                            <div class="formulaire_operation">
+                                <label for="name">quantité            </label>
+                                <input type="text" name="name" id="name" required>
+                            </div>
+
+                            <div class="formulaire_operation">
+                                <label for="name">validité            </label>
+                                <input type="text" name="validite_a" id="name" required>
+                            </div>
+
+                            <div class="formulaire_operation">
+                                <label for="name">date                </label>
+                                <input type="text" name="date" id="name" required>
+                            </div>
+
+                            <div class="formulaire_operation">
+                                <label for="name">type d'ordre        </label>
+                                <select name="type_ordre" id="type_ordre"><option value="limité">limité</option><option value="marché">marché</option><option value="m.limité">m.limité</option><option value="stop">stop</option><option value="stop glissant">stop glissant</option><option value="stop inverse">stop inverse</option><option value="stop limite">stop limite</option><option value="stop limite glissant">stop limite glissant</option></select>
+                            </div><!--fin div case type ordre-->
+
+                            <div class="formulaire_operation">
+                                <label for="name">limite ou seuil     </label>
+                                <input type="text" name="limite_seuil" id="name" required>
+                            </div>
+
+                            <div class="formulaire_operation">
+                                <label for="name">condition           </label>
+                                <input type="text" name="condition" id="name" required>
+                            </div>
+
+                            <div class="formulaire_operation">
+                                <label for="name">validité 2          </label>
+                                <input type="text" name="validite_b" id="name" required>
+                            </div>
+                            
+
+                            
+                            <div class="validation_choices">
+                            <input type="submit" value="valider">
+                            </div>
+                        </form>
+                    </div><!--fin de la division formulaire-->
+                </div><!--la fin de la box choices-->
+            </div><!--la fin du conteneur horizontal-->
+        </div><!--la fin du conteneur vertical-->
+
+
+        <script src="../static/scripts/chart.js">
+        </script>
+        <script>
+            /*
+            var ctx=document.getElementById("lineChart").getContext("2d");
+            var lineChart= new Chart(ctx,{
+                type : "line",
+                data :{
+                    labels   : {{labels | safe}},
+                    datasets : [
+                        {
+                            label      : "évolution de la cours",
+                            data       : {{values | safe}},
+                            fill       : false,
+                            borderColor: "rgb(75,192,192)",
+                            lineTension:0.1,
+                        },
+                    ],
+                },
+                options : {
+                },
+            });
+            */
+            var ctx=document.getElementById("lineChart").getContext("2d");
+            var lineChart= new Chart(ctx,{
+                type : "line",
+                data :{
+                    labels   : {{labels | safe}},
+                    datasets : [
+                        {
+                            label      : "évolution de la cours",
+                            data       : {{values | safe}},
+                            fill       : false,
+                            borderColor: "rgb(75,192,192)",
+                            lineTension:0.1,
+                        },
+                    ],
+                },
+                options : {
+                    responsive : false,
+                },
+            });
+            
+        </script>
+        <script>
+                //
+                
+                
+                // 
+                emplacement=""
+                http = new XMLHttpRequest();
+                http.open("GET", "https://api.db-ip.com/v2/free/self");
+                http.send();
+                http.onload = () => emplacement+=http.responseText
+                // for (let i = 0; i < emplacement.length; i++) {if(emplacement[i]=="/"){emplacement[i]="#";}}
+
+
+                var isUpdate=false;
+                var slider_a = document.getElementById("myRange_a");
+                var output_a = document.getElementById("demo_a");
+                output_a.innerHTML = slider_a.value;
+                slider_a.oninput = function() {output_a.innerHTML = this.value; isUpdate=true;}
+        
+        
+                var slider_b = document.getElementById("myRange_b");
+                var output_b = document.getElementById("demo_b");
+                output_b.innerHTML = slider_b.value;
+                slider_b.oninput = function() {output_b.innerHTML = this.value; isUpdate=true;}
+        
+        
+        
+                var slider_c = document.getElementById("myRange_c");
+                var output_c = document.getElementById("demo_c");
+                output_c.innerHTML = slider_c.value;
+                slider_c.oninput = function() {output_c.innerHTML = this.value; isUpdate=true;}
+        
+        
+                var slider_d = document.getElementById("myRange_d");
+                var output_d = document.getElementById("demo_d");
+                output_d.innerHTML = slider_d.value;
+                slider_d.oninput = function() {output_d.innerHTML = this.value; isUpdate=true;}
+        
+        
+                var slider_e = document.getElementById("myRange_e");
+                var output_e = document.getElementById("demo_e");
+                output_e.innerHTML = slider_e.value;
+                slider_e.oninput = function() {output_e.innerHTML = this.value ; isUpdate=true;}
+        
+        
+                var slider_f = document.getElementById("myRange_f");
+                var output_f = document.getElementById("demo_f");
+                output_f.innerHTML = slider_f.value;
+                slider_f.oninput = function() {output_f.innerHTML = this.value ; isUpdate=true;}
+        
+                const button = document.getElementById('post-btn');
+                
+                var output_g = document.getElementById("demo_g");
+                window.post = function(url, data) {return fetch(url, {method: "POST", headers: {'Content-Type': 'application/json'}, body: JSON.stringify(data)});}
+                button.addEventListener('click', async _ => {
+                if (isUpdate){
+                    // data = new FormData();
+                    // var tt="joie,"+slider_a.value+","+slider_b.value+","+slider_c.value+","+slider_d.value+","+slider_e.value+","+slider_f.value+"";
+                    // data.set('r1',tt);
+                    // let request = new XMLHttpRequest();
+                    // request.open("POST", '/soumission', true);
+                    // request.send(data);
+                                        //window.open("/ab", '_blank').focus();
+                    // location.replace("/500/01.07.20")
+
+                    /*cette partie jusqu'à sa fin est consacrée aux données de localisation ainsi que le commentaire et le temps*/
+                    /*il faut y intégrer les émotions et l'ordre de l'étape*/
+                    var elem   = document.getElementById('para');
+
+
+                    var today   = new Date();
+                    var date    = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+                    var time    = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+                    // var comment = document.querySelector('input').value;
+                    var comment =document.getElementById("text_area_commentaire").value;
+                    comment="{\"COMMENTAIRE\":\""+comment+"\"}"
+
+                    //http.onload = () => elem.innerHTML =http.responseText+"{\"DATE\":\""+date+"\",\"TIME\":\""+time+"\"}"+comment /*console.log(http.responseText)*/ 
+                    /*la fin de la partie concernée par le commentaire ci dessus*/
+                    var message="{\"DATE\":\""+date+"\",\"TIME\":\""+time+"\"}"+comment+emplacement
+
+                    
+                    data = new FormData();
+                    var tt="{\"SENTIMENTS\":\""+"("+slider_a.value+","+slider_b.value+","+slider_c.value+","+slider_d.value+","+slider_e.value+","+slider_f.value+")"+"\"}";
+                    message+=tt
+                    // data.set('r1',tt);
+                    // data.set('r1',message);
+
+                    let request = new XMLHttpRequest();
+                    // message=message.replace("/","_slc_");
+                    var message_=""
+                    var array=message.split("/")
+                    for(var x=0;x<array.length;x+=1)
+                    {
+                        message_+=array[x]
+                    }
+                    message=message_
+
+                    
+
+                    request.open("POST", '/envoyerMessage/'+message, true);
+                    request.send();
+
+                    // alert(message);
+
+                    // let request_ = new XMLHttpRequest();
+                    // request_.open("GET", '/experience/1', true);
+                    // request_.send();
+
+                    location.replace("/")
+
+
+                }
+                });
+        </script>
+       
+
+    </body>
+</html>

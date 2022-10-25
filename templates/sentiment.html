@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--https://www.e-marketing.fr/Thematique/academie-1078/fiche-outils-10154/Identifier-les-6-emotions-fondamentales-326064.htm-->
+<html>
+<head>
+<!--meta name="viewport" content="width=device-width, initial-scale=1"-->
+<link rel="stylesheet" href="{{url_for('static',filename='style/style_a.css')}}">
+</head>
+<body>
+    <a href="/"><button class="button">retour</button></a>
+<h1>veuillez exprimer votre sentiment:</h1>
+<h3>glissez les curseurs coresspondants à votre ressentit</h3>
+<p class="toktok">
+<table>
+    <tbody>
+        <tr>
+            <td><h1>la joie </h1></td>
+            <td><h1>&#128512;</h1></td>
+            <td><input type="range" min="0" max="100" value="0" class="slider" id="myRange_a"></td>
+            <td><p><span id="demo_a"></span></p></td>
+        </tr>
+        <tr>
+            <td><h1>la colère </h1></td>
+            <td><h1>&#128545;</h1></td>
+            <td> <input type="range" min="0" max="100" value="0" class="slider" id="myRange_b"></td>
+            <td><p><span id="demo_b"></span></p></td>
+        </tr>
+        
+        <tr>
+            <td><h1>la peur </h1></td>
+            <td><h1>😱</h1></td>
+            <td> <input type="range" min="0" max="100" value="0" class="slider" id="myRange_c"></td>
+            <td><p><span id="demo_c"></span></p></td>
+        </tr>
+        
+        <tr>
+            <td><h1>la tristesse </h1></td>
+            <td><h1>😥</h1></td>
+            <td> <input type="range" min="0" max="100" value="0" class="slider" id="myRange_d"></td>
+            <td><p><span id="demo_d"></span></p></td>
+        </tr>
+        
+        <tr>
+            <td><h1>la surprise </h1></td>
+            <td><h1>😮</h1></td>
+            <td> <input type="range" min="0" max="100" value="0" class="slider" id="myRange_e"></td>
+            <td><p><span id="demo_e"></span></p></td>
+        </tr>
+        
+        <tr>
+            <td><h1>le dégoût </h1></td>
+            <td><h1>🤮</h1></td>
+            <td> <input type="range" min="0" max="100" value="0" class="slider" id="myRange_f"></td>
+            <td><p><span id="demo_f"></span></p></td>
+        </tr>
+    </tbody>
+</table>
+</p>
+<button class="button" id="post-btn">soumettre</button>
+<td><p><span id="demo_g"></span></p></td>
+
+
+<script src="{{url_for('static',filename='scripts/script_a.js')}}">
+</script>
+</body>
+</html>
+

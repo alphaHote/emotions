@@ -1,0 +1,183 @@
+body {
+    background-color: #000000;
+
+}
+/* p    {color: #FFFFFF;} */
+.conteneur_vertical{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 9fr;
+    width : 100%;
+    height: 100%;
+}
+.titre{
+    /* flex  : 1; */
+    /* border: 1px solid rgb(75,192,192); */
+    /* border-radius: 2px;  */
+    color: aliceblue;
+    text-align: center;
+    text-transform: uppercase;
+    /* font-size: larger; */
+    width: 100%;
+    height: 100%;
+}
+
+
+.conteneur_horizontal{
+    display : grid;
+    grid-template-columns: 1fr 3fr 2fr;
+    width: 100%;
+    height: 100%;
+
+}
+
+.box_information
+{
+    /* flex  : 1; */
+    border: 1px solid rgb(75,192,192);
+    /* border-radius: 5px;      */
+}
+.box_cours
+{
+    /* flex  : 1; */
+    border: 1px solid rgb(75,192,192);
+    display : grid;
+    /* grid-template-columns: 1fr; */
+    /* grid-template-rows: 2fr 1fr 1fr;        */
+}
+/* .box_coices
+{
+    flex  : 1;
+    border: 1px solid rgb(75,192,192);
+    border-radius: 2px;    
+} */
+.lineChart{
+    width : 100%;
+    /* height: 100%; */
+    /* border: 1px solid rgb(75,192,192); */
+}
+
+/* la phase traitement des sentiments  */
+
+.slider{
+    color : #FFFFFF;
+}
+
+.sentiments{
+    display : grid;
+    grid-template-columns: 1fr;
+    grid-template-rows   : 1fr 1fr;
+    align-items: baseline;
+    /* border: 1px solid rgb(75,192,192); */
+}
+.input_commentaire{
+    width : 99.4%;
+    height: 99%;
+    background-color: black; 
+    color: rgb(75,192,192);
+    resize: none;
+    /* border: 1px solid rgb(75,192,192); */
+}
+.commentaire{
+    width : 100%;
+    height: 100%;
+    background-color: black;
+    color: rgb(75,192,192);
+    /* border: 1px solid rgb(75,192,192); */
+
+}
+.sentiment_texte {
+    color : #FFFFFF;
+}
+
+.button_soumettre{
+    width: 100%;
+    height: 100%;
+    background-color: rgb(75,192,192);
+    color:#000000;
+}
+
+
+
+.box_choices{
+    border: 1px solid rgb(75,192,192);
+}
+
+
+
+
+
+
+/* about the slider  */
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+  
+  .slider:hover {
+    opacity: 1;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    background: rgb(75,192,192);
+    cursor: pointer;
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 10px;
+    height: 10px;
+    background: rgb(75,192,192);
+    cursor: pointer;
+  }
+
+
+
+
+
+  /* la box choices */
+
+.formulaire_operation{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows   : 1fr;
+    margin-bottom: 10px;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+.formulaire_operation label 
+{
+    color : #FFFFFF;
+
+}
+
+.formulaire_operation select
+{
+        background-color: black; 
+        color: rgb(75,192,192);
+        /* resize: none; */
+        /* border: 1px solid rgb(75,192,192); */
+}
+
+.formulaire_operation input
+{
+        background-color: black; 
+        color: rgb(75,192,192);
+        /* resize: none; */
+        /* border: 1px solid rgb(75,192,192); */
+}
+
+.validation_choices{
+    display: grid;
+    grid-template-columns: 1fr;
+}

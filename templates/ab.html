@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+
+        </title>
+        <style>
+            .principal{display: grid;grid-template-columns: repeat(2, 1fr);grid-gap: 10px;grid-auto-rows: minmax(100px, auto);background-color:#fffefe;}
+            .toktok{width: 10%;background-color: #4CAF50; }
+            .fit-picture{  float:left;width:100%;}
+            .button {background-color: #4CAF50; /* Green */border: none;color: white;padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer;-webkit-transition-duration: 0.4s; /* Safari */transition-duration: 0.4s;}
+            .button:hover {box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);}
+        </style>
+    </head>
+    <body class="principal">
+        <div class="image_expression">
+            <img class="fit-picture"src="../static/images/ab_colere.jpg"alt="colere">
+        </div>
+        <div class="sentiments">
+            <a href="/aa"><button class="button">retour</button></a>
+            <h1>veuillez exprimer votre sentiment en :</h1>
+            <h3>glissez les curseurs coresspondants à votre ressentit</h3>
+            <table>
+                <tbody>
+                    <tr>
+                        <td><h1>la joie </h1></td>
+                        <td><h1>&#128512;</h1></td>
+                        <td><input type="range" min="0" max="100" value="0" class="slider" id="myRange_a"></td>
+                        <td><p><span id="demo_a"></span></p></td>
+                    </tr>
+                    <tr>
+                        <td><h1>la colère </h1></td>
+                        <td><h1>&#128545;</h1></td>
+                        <td> <input type="range" min="0" max="100" value="0" class="slider" id="myRange_b"></td>
+                        <td><p><span id="demo_b"></span></p></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><h1>la peur </h1></td>
+                        <td><h1>😱</h1></td>
+                        <td> <input type="range" min="0" max="100" value="0" class="slider" id="myRange_c"></td>
+                        <td><p><span id="demo_c"></span></p></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><h1>la tristesse </h1></td>
+                        <td><h1>😥</h1></td>
+                        <td> <input type="range" min="0" max="100" value="0" class="slider" id="myRange_d"></td>
+                        <td><p><span id="demo_d"></span></p></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><h1>la surprise </h1></td>
+                        <td><h1>😮</h1></td>
+                        <td> <input type="range" min="0" max="100" value="0" class="slider" id="myRange_e"></td>
+                        <td><p><span id="demo_e"></span></p></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><h1>le dégoût </h1></td>
+                        <td><h1>🤮</h1></td>
+                        <td> <input type="range" min="0" max="100" value="0" class="slider" id="myRange_f"></td>
+                        <td><p><span id="demo_f"></span></p></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="button" id="post-btn">soumettre</button>
+            <td><p><span id="demo_g"></span></p></td>
+        </div>
+    </body>
+    <script>
+                
+        var isUpdate=false;
+        var slider_a = document.getElementById("myRange_a");
+        var output_a = document.getElementById("demo_a");
+        output_a.innerHTML = slider_a.value;
+        slider_a.oninput = function() {output_a.innerHTML = this.value; isUpdate=true;}
+
+
+        var slider_b = document.getElementById("myRange_b");
+        var output_b = document.getElementById("demo_b");
+        output_b.innerHTML = slider_b.value;
+        slider_b.oninput = function() {output_b.innerHTML = this.value; isUpdate=true;}
+
+
+
+        var slider_c = document.getElementById("myRange_c");
+        var output_c = document.getElementById("demo_c");
+        output_c.innerHTML = slider_c.value;
+        slider_c.oninput = function() {output_c.innerHTML = this.value; isUpdate=true;}
+
+
+        var slider_d = document.getElementById("myRange_d");
+        var output_d = document.getElementById("demo_d");
+        output_d.innerHTML = slider_d.value;
+        slider_d.oninput = function() {output_d.innerHTML = this.value; isUpdate=true;}
+
+
+        var slider_e = document.getElementById("myRange_e");
+        var output_e = document.getElementById("demo_e");
+        output_e.innerHTML = slider_e.value;
+        slider_e.oninput = function() {output_e.innerHTML = this.value ; isUpdate=true;}
+
+
+        var slider_f = document.getElementById("myRange_f");
+        var output_f = document.getElementById("demo_f");
+        output_f.innerHTML = slider_f.value;
+        slider_f.oninput = function() {output_f.innerHTML = this.value ; isUpdate=true;}
+
+        const button = document.getElementById('post-btn');
+        
+        var output_g = document.getElementById("demo_g");
+        window.post = function(url, data) {return fetch(url, {method: "POST", headers: {'Content-Type': 'application/json'}, body: JSON.stringify(data)});}
+        button.addEventListener('click', async _ => {
+        if (isUpdate){
+            data = new FormData();
+            var tt="colere,"+slider_a.value+","+slider_b.value+","+slider_c.value+","+slider_d.value+","+slider_e.value+","+slider_f.value+"";
+            data.set('r1',tt);
+            let request = new XMLHttpRequest();
+            request.open("POST", '/soumission', true);
+            request.send(data);
+            //window.open("/ac", '_blank').focus();
+            location.replace("/ac")
+        }
+        });
+    </script>
+</html>
